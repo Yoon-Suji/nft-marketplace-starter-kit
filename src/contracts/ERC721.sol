@@ -28,7 +28,8 @@ contract ERC721 is ERC165, IERC721 {
     mapping(uint256 => address) private _tokenApprovals;
 
     constructor() {
-        _registerInterface(bytes4(keccak256('balanceOf(bytes4)')^keccak256('ownerOf(bytes4)')^keccak256('transferFrom(bytes4)')));
+        _registerInterface(bytes4(keccak256('balanceOf(bytes4)')^
+        keccak256('ownerOf(bytes4)')^keccak256('transferFrom(bytes4)')));
     }
 
     /// @notice Count all NFTs assigned to an owner

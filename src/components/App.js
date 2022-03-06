@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import KryptoBird from '../abis/KryptoBird.json';
+import {MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn}from 'mdb-react-ui-kit';
+import './App.css';
 
 class App extends Component {
 
@@ -83,7 +85,7 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className='container-filled'>
                 {console.log(this.state.kryptoBirdz)}
                 <nav className='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>
                     <div className='navbar-brand col-sm-3 col-md-3 mr-0' style={{color:'white'}}>
@@ -100,7 +102,7 @@ class App extends Component {
                     <div className='row'>
                         <main role='main' className="col-lg-12 d-flx text-center">
                             <div className='container mr-auto ml-auto' style={{opacity:'0.8'}}>
-                                <h1 style={{color:'white'}}>KryptoBirdz - NFT Marketplace</h1>
+                                <h1 style={{color:'black'}}>KryptoBirdz - NFT Marketplace</h1>
                                 <form onSubmit={(event)=>{
                                     event.preventDefault()
                                     const kryptoBird = this.kryptoBird.value
@@ -113,6 +115,26 @@ class App extends Component {
                                 </form>
                             </div>
                         </main>
+                    </div>
+                    <hr></hr>
+                    <div className='row textCenter'>
+                        {this.state.kryptoBirdz.map((kryptoBird, key)=>{
+                            return (
+                                <div>
+                                    <div>
+                                        <MDBCard className='token img' style={{maxWidth:'22rem'}}>
+                                        <MDBCardImage src={kryptoBird} height='250rem' position='top' style={{marginRight:'4px'}}/>
+                                        <MDBCardBody>
+                                        <MDBCardTitle> KryptoBirdz </MDBCardTitle>
+                                        <MDBCardText>The KryptoBirdz are 20 uniquely generated KBirdz from the cyberpunk cloud galaxy Mystopia!</MDBCardText>
+                                        <MDBBtn href={kryptoBird}>Download</MDBBtn>
+                                        </MDBCardBody>
+                                        </MDBCard>
+                                    </div>
+                                </div>
+
+                            )
+                        })}
                     </div>
                 </div>
             </div>
